@@ -22,27 +22,27 @@ export const useChatStore = defineStore("chat", () => {
   }
 
   async function loadConversations() {
-    const token = requireToken();
-    conversations.value = await api.listConversations(token);
+    const auth = useAuthStore();
+    conversations.value = await auth.requestWithRefresh((token) => api.listConversations(token));
     if (!currentConversationId.value && conversations.value.length > 0) {
       await selectConversation(conversations.value[0].id);
     }
   }
 
   async function createNewConversation() {
-    const token = requireToken();
-    const conversation = await api.createConversation(token);
+    const auth = useAuthStore();
+    const conversation = await auth.requestWithRefresh((token) => api.createConversation(token));
     conversations.value = [conversation, ...conversations.value];
     await selectConversation(conversation.id);
   }
 
   async function selectConversation(conversationId: number) {
-    const token = requireToken();
+    const auth = useAuthStore();
     loading.value = true;
     error.value = "";
     try {
       currentConversationId.value = conversationId;
-      const detail = await api.getConversation(token, conversationId);
+      const detail = await auth.requestWithRefresh((token) => api.getConversation(token, conversationId));
       messages.value = detail.messages.map((item) => ({
         id: item.id,
         role: item.role,
@@ -57,18 +57,20 @@ export const useChatStore = defineStore("chat", () => {
   }
 
   async function renameCurrentConversation(title: string) {
-    const token = requireToken();
+    const auth = useAuthStore();
     if (!currentConversationId.value) return;
-    const updated = await api.renameConversation(token, currentConversationId.value, title);
+    const updated = await auth.requestWithRefresh((token) =>
+      api.renameConversation(token, currentConversationId.value!, title),
+    );
     conversations.value = conversations.value.map((item) => (item.id === updated.id ? updated : item));
   }
 
   async function deleteCurrentConversation() {
-    const token = requireToken();
+    const auth = useAuthStore();
     if (!currentConversationId.value) return;
     const deletingId = currentConversationId.value;
-    await api.deleteConversation(token, deletingId);
-    conversations.value = await api.listConversations(token);
+    await auth.requestWithRefresh((token) => api.deleteConversation(token, deletingId));
+    conversations.value = await auth.requestWithRefresh((token) => api.listConversations(token));
     currentConversationId.value = null;
     messages.value = [];
     if (conversations.value.length > 0) {
@@ -77,7 +79,8 @@ export const useChatStore = defineStore("chat", () => {
   }
 
   async function sendMessage(content: string) {
-    const token = requireToken();
+    const auth = useAuthStore();
+    requireToken();
     const trimmed = content.trim();
     if (!trimmed || streaming.value) return;
 
@@ -104,24 +107,26 @@ export const useChatStore = defineStore("chat", () => {
     streaming.value = true;
 
     try {
-      await api.streamChat(token, currentConversationId.value, trimmed, (event) => {
-        const assistant = messages.value.find((item) => item.id === assistantId);
-        if (!assistant) return;
+      await auth.requestWithRefresh((token) =>
+        api.streamChat(token, currentConversationId.value!, trimmed, (event) => {
+          const assistant = messages.value.find((item) => item.id === assistantId);
+          if (!assistant) return;
 
-        if (event.event === "delta") {
-          assistant.content += event.data.content;
-        }
-        if (event.event === "done") {
-          assistant.id = event.data.assistant_message_id;
-          assistant.content = event.data.answer;
-          assistant.status = "success";
-        }
-        if (event.event === "error") {
-          assistant.id = event.data.assistant_message_id ?? assistant.id;
-          assistant.status = "failed";
-          error.value = event.data.message;
-        }
-      });
+          if (event.event === "delta") {
+            assistant.content += event.data.content;
+          }
+          if (event.event === "done") {
+            assistant.id = event.data.assistant_message_id;
+            assistant.content = event.data.answer;
+            assistant.status = "success";
+          }
+          if (event.event === "error") {
+            assistant.id = event.data.assistant_message_id ?? assistant.id;
+            assistant.status = "failed";
+            error.value = event.data.message;
+          }
+        }),
+      );
       await loadConversations();
     } catch (err) {
       const assistant = messages.value.find((item) => item.id === assistantId);

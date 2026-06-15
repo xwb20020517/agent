@@ -4,10 +4,10 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.deps import AuthContext, get_auth_context, get_redis_client
 from app.db.session import get_db_session
-from app.schemas.auth import LoginRequest, RegisterRequest, TokenResponse
+from app.schemas.auth import LoginRequest, RefreshTokenRequest, RegisterRequest, TokenResponse
 from app.schemas.response import ApiResponse, success
 from app.schemas.user import UserRead
-from app.services.auth_service import login_user, logout_user, register_user
+from app.services.auth_service import login_user, logout_user, refresh_user_tokens, register_user
 
 
 router = APIRouter(prefix="/auth", tags=["auth"])
@@ -38,6 +38,17 @@ async def login(
     redis: Redis = Depends(get_redis_client),
 ) -> ApiResponse[TokenResponse]:
     tokens = await login_user(session, redis, payload)
+    return success(tokens, request_id=getattr(request.state, "request_id", None))
+
+
+@router.post("/refresh", response_model=ApiResponse[TokenResponse])
+async def refresh(
+    payload: RefreshTokenRequest,
+    request: Request,
+    session: AsyncSession = Depends(get_db_session),
+    redis: Redis = Depends(get_redis_client),
+) -> ApiResponse[TokenResponse]:
+    tokens = await refresh_user_tokens(session, redis, payload)
     return success(tokens, request_id=getattr(request.state, "request_id", None))
 
 

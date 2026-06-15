@@ -33,3 +33,7 @@ The endpoint returns Server-Sent Events:
 - `delta`: generated content chunk
 - `done`: full assistant reply is saved
 - `error`: stream failed and failure is recorded
+
+
+
+

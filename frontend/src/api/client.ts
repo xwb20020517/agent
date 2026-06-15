@@ -7,6 +7,18 @@ type ApiResponse<T> = {
   request_id: string | null;
 };
 
+export class ApiError extends Error {
+  status: number;
+  code: number;
+
+  constructor(message: string, status: number, code: number) {
+    super(message);
+    this.name = "ApiError";
+    this.status = status;
+    this.code = code;
+  }
+}
+
 export type User = {
   id: number;
   username: string;
@@ -63,9 +75,9 @@ async function request<T>(path: string, options: RequestInit = {}, token?: strin
       ...options.headers,
     },
   });
-  const payload = (await response.json()) as ApiResponse<T>;
-  if (!response.ok || payload.code !== 0) {
-    throw new Error(payload.message || "Request failed");
+  const payload = (await response.json().catch(() => null)) as ApiResponse<T> | null;
+  if (!response.ok || !payload || payload.code !== 0) {
+    throw new ApiError(payload?.message || "Request failed", response.status, payload?.code ?? -1);
   }
   return payload.data;
 }
@@ -81,6 +93,13 @@ export function login(username: string, password: string) {
   return request<TokenResponse>("/api/v1/auth/login", {
     method: "POST",
     body: JSON.stringify({ username, password }),
+  });
+}
+
+export function refreshToken(refreshToken: string) {
+  return request<TokenResponse>("/api/v1/auth/refresh", {
+    method: "POST",
+    body: JSON.stringify({ refresh_token: refreshToken }),
   });
 }
 
@@ -172,7 +191,7 @@ export async function streamChat(
 
   if (!response.ok || !response.body) {
     const payload = await response.json().catch(() => null);
-    throw new Error(payload?.message || "Stream request failed");
+    throw new ApiError(payload?.message || "Stream request failed", response.status, payload?.code ?? -1);
   }
 
   const reader = response.body.getReader();
