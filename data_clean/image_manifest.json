@@ -1,0 +1,1153 @@
+{
+  "description": "Images are excluded from text RAG and kept here for future multimodal retrieval.",
+  "images": [
+    {
+      "page_idx": 8,
+      "page_number": "149",
+      "para_idx": 6,
+      "block_idx": 16,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        314,
+        388,
+        422
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/e975c5a01e651951d2337ec88ca972d0f8b161109f32e2bb07fbdd3b7bffbc18.jpg",
+          "bbox": [
+            224,
+            314,
+            388,
+            422
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "Close-up of a car's side panel showing a blue vent with a small logo (no text or symbols visible)"
+      ]
+    },
+    {
+      "page_idx": 8,
+      "page_number": "149",
+      "para_idx": 9,
+      "block_idx": 19,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        430,
+        388,
+        539
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/9a3adae6ecf561c9eca8e780843c78e54fa0b828aa868808267f59cfd86e64c6.jpg",
+          "bbox": [
+            224,
+            430,
+            388,
+            539
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "Top-down view of a car charging plug with a blue cable inserted, showing internal components (no text or symbols visible)"
+      ]
+    },
+    {
+      "page_idx": 9,
+      "page_number": "150",
+      "para_idx": 3,
+      "block_idx": 7,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        84,
+        388,
+        192
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/7bd9beb35ec9333219a0c8618701c6415b0953c977cfa6c63be2e224d15075e8.jpg",
+          "bbox": [
+            224,
+            84,
+            388,
+            192
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "Electric vehicle charging station with a blue arrow indicating the cable outlet (no text or symbols visible)"
+      ]
+    },
+    {
+      "page_idx": 9,
+      "page_number": "150",
+      "para_idx": 11,
+      "block_idx": 19,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        323,
+        388,
+        432
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/fee53d306deb75382dc8f6b9bc75b0b2526f7e4a76034b11284505400ac83b99.jpg",
+          "bbox": [
+            224,
+            323,
+            388,
+            432
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "Electric vehicle charging plug with blue arrow indicating power outlet (no text or symbols)"
+      ]
+    },
+    {
+      "page_idx": 13,
+      "page_number": "154",
+      "para_idx": 2,
+      "block_idx": 4,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        67,
+        388,
+        176
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/4e36b111c30154836adb0f4055f7b046a851d5681711c6b0e656c98f40824593.jpg",
+          "bbox": [
+            224,
+            67,
+            388,
+            176
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "Top-down view of a white electric vehicle charging port with a blue logo on the socket (no text or symbols visible)"
+      ]
+    },
+    {
+      "page_idx": 14,
+      "page_number": "155",
+      "para_idx": 8,
+      "block_idx": 17,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        274,
+        388,
+        368
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/73e7b2d6ce34255bee18c521aac53bc8a8469d728dca4f477245a8d46eb86fb3.jpg",
+          "bbox": [
+            224,
+            274,
+            388,
+            368
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "14:15 ① 预约充电 ② 充电截止时间 (天) 23:00 - 充满 ③ 充电后自动识别结果有误了新请求 > 5 ④ ⑤ ⑥ 充电后已恢复停车"
+      ]
+    },
+    {
+      "page_idx": 14,
+      "page_number": "155",
+      "para_idx": 12,
+      "block_idx": 29,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        462,
+        388,
+        555
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/d37601da9b3c19c264ebb8d693352827526ec5b1e9e548fabfb9fb58837adbeb.jpg",
+          "bbox": [
+            224,
+            462,
+            388,
+            555
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "14:28 预约用车 08:00 用车 每天 优惠电价时间：22:00-08:00 2 ① ② ③ ④ 智慧充电 5 与您能用的充电 未连接充电机 请勿使用时钟时钟 47% 数据源时间轴充电（低速电池及电池）（更多）>"
+      ]
+    },
+    {
+      "page_idx": 17,
+      "page_number": "158",
+      "para_idx": 3,
+      "block_idx": 5,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        105,
+        388,
+        213
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/d296b24d2d05c184acb32d9db978a0fdfd517fcef4f8913cff9d6d12dff9550c.jpg",
+          "bbox": [
+            224,
+            105,
+            388,
+            213
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "Electric vehicle charging plug with terminal panel (no text or symbols visible)"
+      ]
+    },
+    {
+      "page_idx": 18,
+      "page_number": "159",
+      "para_idx": 2,
+      "block_idx": 6,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        67,
+        388,
+        176
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/53b8a7b62420d2f257e7db6cb8993d706b14e2815197670ca753ea839756ea87.jpg",
+          "bbox": [
+            224,
+            67,
+            388,
+            176
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "Electrical outlet switch with three buttons and a plug, no text or symbols visible"
+      ]
+    },
+    {
+      "page_idx": 19,
+      "page_number": "160",
+      "para_idx": 11,
+      "block_idx": 18,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        290,
+        388,
+        398
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/753138b4668c3ec9c690c771f8783673a681443a2276c93ae905dbbba21d42b9.jpg",
+          "bbox": [
+            224,
+            290,
+            388,
+            398
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "Top-down view of a white SUV backseat showing the rearrest seat, frontrest grille, and dashboard display (no text or symbols visible)"
+      ]
+    },
+    {
+      "page_idx": 23,
+      "page_number": "164",
+      "para_idx": 5,
+      "block_idx": 9,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        237,
+        388,
+        330
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/e1b4fa889118671cfd73b4e8311a2a867b51b6c95f7d3ee216d6a8789fb11783.jpg",
+          "bbox": [
+            224,
+            237,
+            388,
+            330
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "10:36 搜索 能量管理 充电与放电 前转 常用 灯光 门锁与锁 声音显示 能量 驾驶 DIPilot DHLink 智能充电 充电口电锁距离 应用 使用 智能 对外放电 (VTOL) < 18 > < 24 > < 88>"
+      ]
+    },
+    {
+      "page_idx": 24,
+      "page_number": "165",
+      "para_idx": 7,
+      "block_idx": 14,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        336,
+        388,
+        444
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/fb5d4d3cdd3d52fb463bb1bdeb8b722fbce14ac8a11531bc3015824602a8e050.jpg",
+          "bbox": [
+            224,
+            336,
+            388,
+            444
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "Interior view of a modern car with white seats and a blue circular icon highlighting the seat (no text or symbols)"
+      ]
+    },
+    {
+      "page_idx": 27,
+      "page_number": "168",
+      "para_idx": 10,
+      "block_idx": 14,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        426,
+        388,
+        534
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/0ff6a0a28b35084706dd9829a2b17832fe114366c4cd7ef775127a7a2132d08e.jpg",
+          "bbox": [
+            224,
+            426,
+            388,
+            534
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "搭火正极 搭火负极"
+      ]
+    },
+    {
+      "page_idx": 32,
+      "page_number": "173",
+      "para_idx": 5,
+      "block_idx": 11,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        201,
+        388,
+        310
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/d922e785666f77b647362082b678319309b4d1b01c42f8bd51f874853980b188.jpg",
+          "bbox": [
+            224,
+            201,
+            388,
+            310
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "Close-up of a car's side panel showing a blue vent with a white arrow icon (no text or symbols)"
+      ]
+    },
+    {
+      "page_idx": 32,
+      "page_number": "173",
+      "para_idx": 8,
+      "block_idx": 16,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        326,
+        388,
+        435
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/08a85cd83b368b4e7eb64c906619e0e08ae10881c1d52bf08a185ec439afe79a.jpg",
+          "bbox": [
+            224,
+            326,
+            388,
+            435
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "Close-up of a car's side panel with a blue circular button and connecting lines, no visible text or symbols"
+      ]
+    },
+    {
+      "page_idx": 32,
+      "page_number": "173",
+      "para_idx": 9,
+      "block_idx": 17,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        451,
+        388,
+        559
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/9b405365379644e64d1eb26409d60b1b13ed10ca7732669402f318104b281da0.jpg",
+          "bbox": [
+            224,
+            451,
+            388,
+            559
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "Close-up of a car's side panel with a blue arrow pointing to the door (no text or symbols visible)"
+      ]
+    },
+    {
+      "page_idx": 37,
+      "page_number": "178",
+      "para_idx": 2,
+      "block_idx": 6,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        107,
+        388,
+        216
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/dc15299df76dcedf5c50de41874f9c481b1a713278f044a4103a62158ad27e92.jpg",
+          "bbox": [
+            224,
+            107,
+            388,
+            216
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "Illustration of a white minivan parked on a wet road with raindrops, surrounded by trees and a no-smoking symbol (no text or labels)"
+      ]
+    },
+    {
+      "page_idx": 40,
+      "page_number": "181",
+      "para_idx": 3,
+      "block_idx": 7,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        107,
+        388,
+        216
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/5b4e2c004af82eecb2c3f9bcf4fab5c6ef405dff17474fc7b3094acdcb0421bd.jpg",
+          "bbox": [
+            224,
+            107,
+            388,
+            216
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "Interior view of a car with numbered annotations indicating engine control and ventilation system"
+      ]
+    },
+    {
+      "page_idx": 45,
+      "page_number": "186",
+      "para_idx": 2,
+      "block_idx": 4,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        107,
+        390,
+        201
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/d44ad4d2042e44ed7a16e5f931b5aeddf993d91e613a62d50d8f642d696fead7.jpg",
+          "bbox": [
+            224,
+            107,
+            390,
+            201
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "10:30 直线垂直 16° ① ② ③ ④ 直线模式 舒适 运动 舒适控制 偏弱 适中 较强"
+      ]
+    },
+    {
+      "page_idx": 45,
+      "page_number": "186",
+      "para_idx": 9,
+      "block_idx": 16,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        404,
+        388,
+        514
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/8384ce2e09f4ee56679c7b699a7e70a26fccd3f024f83977d9fc4d55c8e996fd.jpg",
+          "bbox": [
+            224,
+            404,
+            388,
+            514
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "R N P D"
+      ]
+    },
+    {
+      "page_idx": 51,
+      "page_number": "192",
+      "para_idx": 2,
+      "block_idx": 6,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        67,
+        390,
+        161
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/719431b8512b8e1f4bbcc7c5619053b1384d1d97075239343587af0c16242f87.jpg",
+          "bbox": [
+            224,
+            67,
+            390,
+            161
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "10:36 搜索 智能帮助 驾驶控制 舒适用车 船舶感知 常用 灯光 门窗与锁 声音显示 续航量 驾驶 OPIbit DBLink 舒适 运动 制动动力模式 舒适 运动 电子车身锁定系统关闭 自动驻车 电子驻车制动 开启后，通过换挡或联锁门关闭"
+      ]
+    },
+    {
+      "page_idx": 67,
+      "page_number": "208",
+      "para_idx": 5,
+      "block_idx": 19,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        356,
+        388,
+        465
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/e7c580e05385da00d884e3af49bad8eba55e650deae4bfcdf9d29e80e8d678d4.jpg",
+          "bbox": [
+            224,
+            356,
+            388,
+            465
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "1 2 3 4 夏 AIRBAG"
+      ]
+    },
+    {
+      "page_idx": 68,
+      "page_number": "209",
+      "para_idx": 8,
+      "block_idx": 12,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        372,
+        388,
+        481
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/f1e7322943dee69f7389c0c8de6019e9426729d70921b24a324b13330cc56538.jpg",
+          "bbox": [
+            224,
+            372,
+            388,
+            481
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "夏 AIRBAG"
+      ]
+    },
+    {
+      "page_idx": 76,
+      "page_number": "217",
+      "para_idx": 7,
+      "block_idx": 15,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        326,
+        388,
+        436
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/ec6a139d1ad9d9ff5fe31545990b7d5ef07fd13d17bf60653f85a88ce1c5e2a4.jpg",
+          "bbox": [
+            224,
+            326,
+            388,
+            436
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "夏 AIRBAG"
+      ]
+    },
+    {
+      "page_idx": 80,
+      "page_number": "221",
+      "para_idx": 6,
+      "block_idx": 19,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        409,
+        388,
+        517
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/b673e9d859d5e1e2f3b51f0ad017c337b606d0c3d901197bb59b5009f523afa2.jpg",
+          "bbox": [
+            224,
+            409,
+            388,
+            517
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "夏 AIRBAG"
+      ]
+    },
+    {
+      "page_idx": 87,
+      "page_number": "228",
+      "para_idx": 4,
+      "block_idx": 12,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        234,
+        388,
+        342
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/c34d15c7a331e66d45ae5cad97b4f6d1fdc89d03c02f21f6faa7cade68c2aac8.jpg",
+          "bbox": [
+            224,
+            234,
+            388,
+            342
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "夏 AIRBAG"
+      ]
+    },
+    {
+      "page_idx": 89,
+      "page_number": "230",
+      "para_idx": 6,
+      "block_idx": 12,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        379,
+        388,
+        488
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/479dc79428453f8c48e540b49dd26d79f61cf65207d10843aebf431d6d287509.jpg",
+          "bbox": [
+            224,
+            379,
+            388,
+            488
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "1 2 3 4 夏 AIRBAG"
+      ]
+    },
+    {
+      "page_idx": 90,
+      "page_number": "231",
+      "para_idx": 6,
+      "block_idx": 8,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        219,
+        388,
+        327
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/b36f3900c9470ac4d125c22f8930ab87fe8ae9270c8652806ee803d24ce814d9.jpg",
+          "bbox": [
+            224,
+            219,
+            388,
+            327
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "夏 AIRBAG"
+      ]
+    },
+    {
+      "page_idx": 107,
+      "page_number": "248",
+      "para_idx": 3,
+      "block_idx": 11,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        118,
+        388,
+        226
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/72da955d8e89de499502ee03863c37cb5801e648c6bb82ef25024706d0684f4f.jpg",
+          "bbox": [
+            224,
+            118,
+            388,
+            226
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "1 2 3 4 5 6 7 8 9 10 11 12"
+      ]
+    },
+    {
+      "page_idx": 108,
+      "page_number": "249",
+      "para_idx": 6,
+      "block_idx": 12,
+      "source_block_type": "image",
+      "bbox": [
+        225,
+        223,
+        388,
+        332
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/3eac03f61f517d6573af9da465f417501b5324f615e5a02475a83c1a7a9f22da.jpg",
+          "bbox": [
+            225,
+            223,
+            388,
+            332
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "Top-down view of a white car with two side windows, no text or symbols visible"
+      ]
+    },
+    {
+      "page_idx": 110,
+      "page_number": "251",
+      "para_idx": 7,
+      "block_idx": 23,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        444,
+        388,
+        553
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/96e1ffde687f4b6245544e05b07fca8669f40a25cde8486e9cb1e1e5741bd402.jpg",
+          "bbox": [
+            224,
+            444,
+            388,
+            553
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "Close-up of a car steering wheel with Chinese and English branding, showing dashboard and control buttons (no readable text or symbols)"
+      ]
+    },
+    {
+      "page_idx": 111,
+      "page_number": "252",
+      "para_idx": 2,
+      "block_idx": 6,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        101,
+        388,
+        195
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/d761f9a76dd31bb70d708fae55801901a550e8c71b9a3d1d91bce409c2c7fdd3.jpg",
+          "bbox": [
+            224,
+            101,
+            388,
+            195
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "Two-panel image showing a red car on a curved elevated platform and its interior view with stairs and ceiling (no visible text or symbols)"
+      ]
+    },
+    {
+      "page_idx": 115,
+      "page_number": "256",
+      "para_idx": 4,
+      "block_idx": 13,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        347,
+        388,
+        455
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/d54f8f577baa9d887ebb201fea0d4ed63581098d71f17b8d167cabe7e9c5343a.jpg",
+          "bbox": [
+            224,
+            347,
+            388,
+            455
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "Interior view of a car with visible dashboard, steering wheel, and parking sign indicating parking restriction"
+      ]
+    },
+    {
+      "page_idx": 157,
+      "page_number": "298",
+      "para_idx": 7,
+      "block_idx": 17,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        340,
+        388,
+        448
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/b6165c592e776f0d99c9f1a125a6bac10bba3ce2e9666865c786fd2fa3d59c2f.jpg",
+          "bbox": [
+            224,
+            340,
+            388,
+            448
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "Side view of a car's front and rear mirror with a blue arrow pointing to the side panel (no text or symbols visible)"
+      ]
+    },
+    {
+      "page_idx": 173,
+      "page_number": "314",
+      "para_idx": 2,
+      "block_idx": 4,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        105,
+        390,
+        214
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/f1446369c87fd4e4a05ddb60ee4170b77604c682c787c7c79664d8922ff8a9b2.jpg",
+          "bbox": [
+            224,
+            105,
+            390,
+            214
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "Interior view of a car showing the side mirror and rearview compartment (no text or symbols visible)"
+      ]
+    },
+    {
+      "page_idx": 173,
+      "page_number": "314",
+      "para_idx": 5,
+      "block_idx": 7,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        221,
+        390,
+        315
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/15b6217b61d21fb1565e3a3a9830dc4bee6f8f3990e2540985a5bb9948d85bba.jpg",
+          "bbox": [
+            224,
+            221,
+            390,
+            315
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "10:36 搜索 智能辅助 驾驶控制 舒适用车 森勒感知 常用 灯光 门窗与锁 声音显示 能量 驾驶 OPbit DELink 驾驶员监测辅助 场景窗 标准 高灵敏 疲劳驾驶提醒 分心驾驶提醒 手持打电话提醒 儿童退赔检测 18% 24%"
+      ]
+    },
+    {
+      "page_idx": 177,
+      "page_number": "318",
+      "para_idx": 5,
+      "block_idx": 10,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        147,
+        388,
+        256
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/a9da50bb7abfd3be470380fe4c2fd1fdda152dbd76ddce5d1d514df8a2fb2eda.jpg",
+          "bbox": [
+            224,
+            147,
+            388,
+            256
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "Illustration of a person walking past a car with sensor waves, no text or symbols present"
+      ]
+    },
+    {
+      "page_idx": 178,
+      "page_number": "319",
+      "para_idx": 11,
+      "block_idx": 18,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        435,
+        388,
+        528
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/806a7ef3761f3cf2838444fed3e4d8ed6a625400b3b9438760423aab1f900f3d.jpg",
+          "bbox": [
+            224,
+            435,
+            388,
+            528
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "10:36 搜索 智能辅助 驾驶控制 舒适用车 查频感知 常用 灯光 门窗与锁 声音显示 能量 驾驶 DIP6bit DBLink 低灵敏 标准 高灵敏 疲劳驾驶提醒 分心驾驶提醒 手持打电话提醒 儿童健康检测 标准 好时"
+      ]
+    },
+    {
+      "page_idx": 184,
+      "page_number": "325",
+      "para_idx": 16,
+      "block_idx": 21,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        406,
+        388,
+        515
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/eacc71f94f93d8d267eee300c677c4d10b2dab16a8a93e1b9e50f10af6436315.jpg",
+          "bbox": [
+            224,
+            406,
+            388,
+            515
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "Top-down schematic of a car showing front, rear, side, and interior components (no text or labels)"
+      ]
+    },
+    {
+      "page_idx": 186,
+      "page_number": "327",
+      "para_idx": 2,
+      "block_idx": 6,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        142,
+        388,
+        250
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/024c2138943227b5009b4f08d639ed253d0504d7edac6514c56362d91f5b4bb0.jpg",
+          "bbox": [
+            224,
+            142,
+            388,
+            250
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "Side view of a white car with a blue arrow pointing to the front window (no text or symbols visible)"
+      ]
+    },
+    {
+      "page_idx": 186,
+      "page_number": "327",
+      "para_idx": 4,
+      "block_idx": 8,
+      "source_block_type": "image",
+      "bbox": [
+        224,
+        266,
+        388,
+        375
+      ],
+      "image_refs": [
+        {
+          "image_path": "https://cdn-mineru.openxlab.org.cn/result/2026-06-15/8c3774a3-3e39-4aaa-8147-1668f8bfa970/baf921784c389208818f82913d69e3eb56a8aae0b1f76b68e24a830a85cc1e99.jpg",
+          "bbox": [
+            224,
+            266,
+            388,
+            375
+          ],
+          "type": "image"
+        }
+      ],
+      "content_descriptions": [
+        "Interior view of a modern electric car dashboard with control panel and mode dial (no visible text or symbols)"
+      ]
+    }
+  ]
+}
