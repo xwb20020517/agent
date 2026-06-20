@@ -7,6 +7,8 @@ export const useChatStore = defineStore("chat", () => {
   const conversations = ref<api.Conversation[]>([]);
   const currentConversationId = ref<number | null>(null);
   const messages = ref<api.LocalMessage[]>([]);
+  const documents = ref<api.ManualDocument[]>([]);
+  const selectedSourceFile = ref<string>("");
   const loading = ref(false);
   const streaming = ref(false);
   const error = ref("");
@@ -26,6 +28,14 @@ export const useChatStore = defineStore("chat", () => {
     conversations.value = await auth.requestWithRefresh((token) => api.listConversations(token));
     if (!currentConversationId.value && conversations.value.length > 0) {
       await selectConversation(conversations.value[0].id);
+    }
+  }
+
+  async function loadDocuments() {
+    const auth = useAuthStore();
+    documents.value = await auth.requestWithRefresh((token) => api.listManualDocuments(token));
+    if (!selectedSourceFile.value && documents.value.length > 0) {
+      selectedSourceFile.value = documents.value[0].source_file;
     }
   }
 
@@ -89,9 +99,10 @@ export const useChatStore = defineStore("chat", () => {
     }
     if (!currentConversationId.value) return;
 
+    const userMessageId = `user-${Date.now()}`;
     const assistantId = `stream-${Date.now()}`;
     messages.value.push({
-      id: `user-${Date.now()}`,
+      id: userMessageId,
       role: "user",
       content: trimmed,
       status: "success",
@@ -108,24 +119,36 @@ export const useChatStore = defineStore("chat", () => {
 
     try {
       await auth.requestWithRefresh((token) =>
-        api.streamChat(token, currentConversationId.value!, trimmed, (event) => {
-          const assistant = messages.value.find((item) => item.id === assistantId);
-          if (!assistant) return;
+        api.streamChat(
+          token,
+          currentConversationId.value!,
+          trimmed,
+          (event) => {
+            const assistant = messages.value.find((item) => item.id === assistantId);
+            if (!assistant) return;
 
-          if (event.event === "delta") {
-            assistant.content += event.data.content;
-          }
-          if (event.event === "done") {
-            assistant.id = event.data.assistant_message_id;
-            assistant.content = event.data.answer;
-            assistant.status = "success";
-          }
-          if (event.event === "error") {
-            assistant.id = event.data.assistant_message_id ?? assistant.id;
-            assistant.status = "failed";
-            error.value = event.data.message;
-          }
-        }),
+            switch (event.event) {
+              case "start": {
+                const userMsg = messages.value.find((item) => item.id === userMessageId);
+                if (userMsg) userMsg.id = event.data.user_message_id;
+                break;
+              }
+              case "delta":
+                assistant.content += event.data.content;
+                break;
+              case "done":
+                assistant.id = event.data.assistant_message_id;
+                assistant.sources = event.data.sources;
+                assistant.status = "success";
+                break;
+              case "error":
+                assistant.status = "failed";
+                error.value = event.data.message;
+                break;
+            }
+          },
+          selectedSourceFile.value || null,
+        ),
       );
       await loadConversations();
     } catch (err) {
@@ -141,6 +164,8 @@ export const useChatStore = defineStore("chat", () => {
     conversations.value = [];
     currentConversationId.value = null;
     messages.value = [];
+    documents.value = [];
+    selectedSourceFile.value = "";
     loading.value = false;
     streaming.value = false;
     error.value = "";
@@ -151,10 +176,13 @@ export const useChatStore = defineStore("chat", () => {
     currentConversationId,
     currentConversation,
     messages,
+    documents,
+    selectedSourceFile,
     loading,
     streaming,
     error,
     loadConversations,
+    loadDocuments,
     createNewConversation,
     selectConversation,
     renameCurrentConversation,

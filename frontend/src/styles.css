@@ -12,6 +12,7 @@ body {
 
 button,
 input,
+select,
 textarea {
   font: inherit;
 }
@@ -62,6 +63,7 @@ label {
 }
 
 input,
+select,
 textarea {
   width: 100%;
   border: 1px solid #d6dde8;
@@ -212,6 +214,12 @@ textarea {
   font-size: 14px;
 }
 
+.manual-picker {
+  display: grid;
+  width: min(320px, 100%);
+  gap: 6px;
+}
+
 .messages {
   display: flex;
   min-height: 0;
@@ -255,6 +263,48 @@ textarea {
   margin: 0;
   white-space: pre-wrap;
   word-break: break-word;
+}
+
+.sources {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+  border-top: 1px solid #e5eaf2;
+  padding-top: 10px;
+}
+
+.sources strong {
+  color: #344054;
+  font-size: 13px;
+}
+
+.sources ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sources li {
+  display: grid;
+  gap: 5px;
+  border: 1px solid #dbe2ea;
+  border-radius: 6px;
+  background: #f8fafc;
+  padding: 9px 10px;
+}
+
+.source-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  color: #4d5b6c;
+  font-size: 12px;
+}
+
+.source-meta small {
+  color: #697586;
 }
 
 .error {

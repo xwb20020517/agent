@@ -22,7 +22,7 @@ onMounted(async () => {
     await router.replace("/login");
     return;
   }
-  await chat.loadConversations();
+  await Promise.all([chat.loadConversations(), chat.loadDocuments()]);
 });
 </script>
 

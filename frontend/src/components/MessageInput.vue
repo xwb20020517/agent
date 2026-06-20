@@ -32,7 +32,7 @@ function handleKeydown(event: KeyboardEvent) {
     <textarea
       v-model="draft"
       :disabled="disabled"
-      placeholder="输入你的问题"
+      placeholder="输入你的手册问题"
       rows="3"
       @keydown="handleKeydown"
     />

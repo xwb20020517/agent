@@ -9,8 +9,19 @@ const chat = useChatStore();
 <template>
   <section class="chat-panel">
     <header class="chat-header">
-      <h1>{{ chat.currentConversation?.title ?? "开始一次问答" }}</h1>
-      <span>{{ chat.streaming ? "生成中" : "就绪" }}</span>
+      <div>
+        <h1>{{ chat.currentConversation?.title ?? "开始一次问答" }}</h1>
+        <span>{{ chat.streaming ? "生成中" : "就绪" }}</span>
+      </div>
+      <label class="manual-picker">
+        <span>手册</span>
+        <select v-model="chat.selectedSourceFile" :disabled="chat.streaming || !chat.documents.length">
+          <option value="">全部手册</option>
+          <option v-for="doc in chat.documents" :key="doc.id" :value="doc.source_file">
+            {{ doc.display_name ?? doc.source_file }}
+          </option>
+        </select>
+      </label>
     </header>
 
     <MessageList :messages="chat.messages" :loading="chat.loading" />

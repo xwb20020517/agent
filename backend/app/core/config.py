@@ -56,6 +56,22 @@ class Settings(BaseSettings):
     LLM_MODEL: str | None = "qwen3.6-flash-2026-04-16"
     LLM_ENABLE_THINKING: bool = True
 
+    QDRANT_URL: str = "http://127.0.0.1:6333"
+    QDRANT_API_KEY: str | None = None
+    QDRANT_COLLECTION: str = "car_manual_chunks"
+
+    EMBEDDING_PROVIDER: str = "openai_compatible"
+    EMBEDDING_BASE_URL: str | None = None
+    EMBEDDING_API_KEY: str | None = None
+    EMBEDDING_MODEL: str | None = None
+    EMBEDDING_DIM: int = 1024
+
+    RAG_TOP_K: int = 5
+    RAG_SCORE_THRESHOLD: float = 0.2
+    RAG_CONTEXT_MAX_CHARS: int = 6000
+    RAG_RETRIEVAL_CACHE_TTL: int = 600
+    RAG_QUERY_EMBEDDING_CACHE_TTL: int = 3600
+
     @computed_field
     @property
     def resolved_llm_api_key(self) -> str | None:

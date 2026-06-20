@@ -60,10 +60,30 @@ export type Message = {
 
 export type LocalMessage = Pick<Message, "role" | "content" | "status"> & {
   id: number | string;
+  sources?: RagSource[];
 };
 
 export type ConversationDetail = Conversation & {
   messages: Message[];
+};
+
+export type RagSource = {
+  chunk_id: string;
+  source_file: string;
+  section_title: string | null;
+  page_number_start: string | null;
+  page_number_end: string | null;
+  score: number;
+  content_preview: string;
+};
+
+export type ManualDocument = {
+  id: number;
+  source_file: string;
+  display_name: string | null;
+  car_model_name: string | null;
+  chunk_count: number;
+  embedding_status: string;
 };
 
 async function request<T>(path: string, options: RequestInit = {}, token?: string): Promise<T> {
@@ -149,6 +169,10 @@ export function deleteConversation(token: string, conversationId: number) {
   );
 }
 
+export function listManualDocuments(token: string) {
+  return request<ManualDocument[]>("/api/v1/rag/documents", {}, token);
+}
+
 export type StreamEvent =
   | { event: "start"; data: { conversation_id: number; user_message_id: number; request_id: string } }
   | { event: "delta"; data: { content: string } }
@@ -159,6 +183,8 @@ export type StreamEvent =
         user_message_id: number;
         assistant_message_id: number;
         answer: string;
+        sources: RagSource[];
+        latency_ms: number;
       };
     }
   | { event: "error"; data: { message: string; assistant_message_id?: number } };
@@ -179,6 +205,8 @@ export async function streamChat(
   conversationId: number,
   message: string,
   onEvent: (event: StreamEvent) => void,
+  sourceFile?: string | null,
+  topK?: number,
 ) {
   const response = await fetch(`${API_BASE_URL}/api/v1/chat/stream`, {
     method: "POST",
@@ -186,7 +214,13 @@ export async function streamChat(
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify({ conversation_id: conversationId, message, stream: true }),
+    body: JSON.stringify({
+      conversation_id: conversationId,
+      message,
+      stream: true,
+      source_file: sourceFile || null,
+      top_k: topK ?? undefined,
+    }),
   });
 
   if (!response.ok || !response.body) {

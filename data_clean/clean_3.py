@@ -4,7 +4,7 @@ import re
 from pathlib import Path
 
 
-MIN_CHARS = 80
+MIN_CHARS = 200
 MAX_CHARS = 800
 
 
@@ -64,13 +64,6 @@ def block_id(block):
     return block.get("block_idx", block.get("index"))
 
 
-def is_title_only_chunk(chunk):
-    content_blocks = chunk.get("_content_blocks", [])
-    return (
-        chunk.get("chunk_type") == "text"
-        and bool(content_blocks)
-        and all(block_type == "title" for block_type, _ in content_blocks)
-    )
 
 
 def flush_text_chunk(chunks, current, source_file):
@@ -321,43 +314,49 @@ def recursive_split_text(text):
     return hard_split(text)
 
 
-def merge_small_title_only_chunks(chunks):
+def merge_small_text_chunks(chunks):
     merged = []
     i = 0
     changed = False
+
     while i < len(chunks):
         chunk = chunks[i]
+
         if (
-            is_title_only_chunk(chunk)
-            and text_len(chunk["content"]) < MIN_CHARS
+            chunk.get("chunk_type") != "table"
+            and text_len(chunk.get("content", "")) < MIN_CHARS
             and i + 1 < len(chunks)
             and chunks[i + 1].get("chunk_type") != "table"
         ):
             next_chunk = chunks[i + 1]
-            section_title = " / ".join(
-                part
-                for part in [chunk.get("section_title"), next_chunk.get("section_title")]
-                if normalize_text(part)
+
+            combined = dict(chunk)
+            combined["page_idx_end"] = next_chunk["page_idx_end"]
+            combined["page_number_end"] = next_chunk["page_number_end"]
+
+            combined["content"] = normalize_text(
+                chunk.get("content", "") + "\n\n" + next_chunk.get("content", "")
             )
-            combined = dict(next_chunk)
-            combined["page_idx_start"] = chunk["page_idx_start"]
-            combined["page_number_start"] = chunk["page_number_start"]
-            combined["section_title"] = section_title or next_chunk.get("section_title")
-            combined["content"] = normalize_text(chunk["content"] + "\n\n" + next_chunk["content"])
-            combined["_content_blocks"] = chunk.get("_content_blocks", []) + next_chunk.get("_content_blocks", [])
+
+            combined["_content_blocks"] = (
+                chunk.get("_content_blocks", [])
+                + next_chunk.get("_content_blocks", [])
+            )
+
             combined["metadata"] = make_metadata(combined)
+
             merged.append(combined)
             changed = True
             i += 2
         else:
             merged.append(chunk)
             i += 1
-    return merged, changed
 
+    return merged, changed
 
 def apply_text_length_rules(chunks):
     while True:
-        chunks, changed = merge_small_title_only_chunks(chunks)
+        chunks, changed = merge_small_text_chunks(chunks)
         if not changed:
             break
 
@@ -447,7 +446,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Convert cleaned_2.json into RAG chunks.jsonl.")
     parser.add_argument("input_path", nargs="?", default="cleaned_2.json")
     parser.add_argument("output_path", nargs="?", default="chunks.jsonl")
-    parser.add_argument("--source-file", default=None)
+    parser.add_argument("--source-file", default="xia.pdf")
     return parser.parse_args()
 
 
