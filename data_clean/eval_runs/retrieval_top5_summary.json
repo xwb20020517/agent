@@ -1,0 +1,18 @@
+{
+  "total": 1,
+  "successful": 0,
+  "failed": 1,
+  "top_k": 5,
+  "retrieval": {
+    "chunk_hit_rate": 0.0,
+    "chunk_recall": 0.0,
+    "chunk_precision": 0.0,
+    "mrr": 0.0,
+    "page_hit_rate": 0.0,
+    "page_recall": 0.0
+  },
+  "latency_ms": {
+    "avg": 0.0,
+    "max": 0
+  }
+}
