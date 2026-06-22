@@ -1,5 +1,5 @@
 from app.core.config import settings
-from app.rag.retriever import RetrievedChunk
+from app.rag.retriever_types import RetrievedChunk
 from app.rag.utils import content_preview
 from app.schemas.rag import RAGSource
 
@@ -35,21 +35,31 @@ def build_context(chunks: list[RetrievedChunk], max_chars: int | None = None) ->
     return "\n".join(blocks).strip()
 
 
-def build_rag_prompt(query: str, chunks: list[RetrievedChunk]) -> list[dict[str, str]]:
+def build_rag_prompt(
+    query: str,
+    chunks: list[RetrievedChunk],
+    rewritten_query: str | None = None,
+) -> list[dict[str, str]]:
     context = build_context(chunks)
-    prompt = f"""你是一个汽车用户手册智能问答助手。
+    rewritten_block = rewritten_query.strip() if rewritten_query and rewritten_query.strip() else "无"
+    prompt = f"""你是一个车辆用户手册智能问答助手。
+你只能根据【用户手册资料】回答问题。如果资料中没有明确答案，请回答“根据当前用户手册资料，无法确定”。不要编造不存在的功能、按钮、参数、配置、故障原因或操作步骤。
 
-你只能根据【用户手册资料】回答问题。
-如果资料中没有明确答案，请回答“根据当前用户手册资料，无法确定”。
-不要编造不存在的功能、按钮、参数、配置、故障原因或操作步骤。
+【原始用户问题】是用户的真实输入，必须保留其原意。
+【查询理解后的问题】只用于帮助你理解用户意图、历史指代和检索目标；它不是事实来源，不能替代【用户手册资料】。
+最终回答必须以【用户手册资料】为依据。
+
 如果涉及驾驶安全、维修、充电、故障处理，请提醒用户注意安全，并建议以车辆实际提示和官方售后为准。
-回答应简洁、清楚，优先给出操作步骤。
+回答应简洁、清楚，优先给出手册资料中支持的操作步骤。
 
 【用户手册资料】
 {context}
 
-【用户问题】
+【原始用户问题】
 {query}
+
+【查询理解后的问题】
+{rewritten_block}
 
 请根据用户手册资料回答："""
     return [{"role": "user", "content": prompt}]

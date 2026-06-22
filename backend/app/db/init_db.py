@@ -8,6 +8,7 @@ from app import models  # noqa: F401
 
 FK_CASCADE_RULES = [
     ("conversations", "user_id", "users", "id"),
+    ("conversation_memories", "conversation_id", "conversations", "id"),
     ("messages", "conversation_id", "conversations", "id"),
     ("messages", "user_id", "users", "id"),
     ("llm_calls", "conversation_id", "conversations", "id"),

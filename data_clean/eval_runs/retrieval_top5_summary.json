@@ -1,18 +1,46 @@
+
 {
-  "total": 1,
-  "successful": 0,
-  "failed": 1,
+  "total": 53,
+  "successful": 53,
+  "failed": 0,
   "top_k": 5,
   "retrieval": {
-    "chunk_hit_rate": 0.0,
-    "chunk_recall": 0.0,
-    "chunk_precision": 0.0,
-    "mrr": 0.0,
-    "page_hit_rate": 0.0,
-    "page_recall": 0.0
+    "chunk_hit_rate": 0.9622641509433962,
+    "chunk_recall": 0.8962264150943396,
+    "chunk_precision": 0.2867924528301887,
+    "mrr": 0.940251572327044,
+    "page_hit_rate": 0.9811320754716981,
+    "page_recall": 0.8993710691823898,
+    "context_recall": 0.8855766120387203,
+    "context_precision": 0.9691037735849056
   },
   "latency_ms": {
-    "avg": 0.0,
-    "max": 0
+    "avg": 2292.754716981132,
+    "max": 4680
+  }
+}
+
+
+
+{
+  "total": 53,
+  "successful": 53,
+  "failed": 0,
+  "top_k": 5,
+  "use_query_rewrite": true,
+  "final_seed_top_k": 10,
+  "retrieval": {
+    "chunk_hit_rate": 0.9811320754716981,
+    "chunk_recall": 0.949685534591195,
+    "chunk_precision": 0.18465109314165917,
+    "mrr": 0.9088050314465408,
+    "page_hit_rate": 1.0,
+    "page_recall": 0.9339622641509434,
+    "context_recall": 0.9724300880526646,
+    "context_precision": 0.9968736481315098
+  },
+  "latency_ms": {
+    "avg": 3269.5471698113206,
+    "max": 7056
   }
 }

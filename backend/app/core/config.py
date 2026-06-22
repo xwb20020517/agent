@@ -71,6 +71,22 @@ class Settings(BaseSettings):
     RAG_CONTEXT_MAX_CHARS: int = 6000
     RAG_RETRIEVAL_CACHE_TTL: int = 600
     RAG_QUERY_EMBEDDING_CACHE_TTL: int = 3600
+    RAG_RETRIEVAL_STRATEGY: Literal["vector", "hybrid"] = "hybrid"
+    RAG_CHUNKS_JSONL_PATH: Path = BASE_DIR.parent / "data_clean" / "chunks.jsonl"
+    RAG_VECTOR_RECALL_K: int = 20
+    RAG_SPARSE_RECALL_K: int = 20
+    RAG_RRF_K: int = 60
+    RAG_VECTOR_RRF_WEIGHT: float = 1.0
+    RAG_SPARSE_RRF_WEIGHT: float = 1.0
+    RAG_CHUNK_EXPANSION_WINDOW: int = 1
+    RAG_FINAL_SEED_TOP_K: int = 10
+    RAG_SOURCE_WEIGHT_ORIGINAL_QUERY: float = 1.3
+    RAG_SOURCE_WEIGHT_REWRITTEN_QUERY: float = 1.1
+    RAG_SOURCE_WEIGHT_SUB_QUERY: float = 1.0
+    RAG_SOURCE_WEIGHT_KEYWORDS: float = 0.8
+    RAG_HISTORY_RECENT_ROUNDS: int = 3
+    RAG_HISTORY_SUMMARY_ROUND_INTERVAL: int = 10
+    RAG_HISTORY_SUMMARY_MAX_CHARS: int = 3000
 
     @computed_field
     @property
