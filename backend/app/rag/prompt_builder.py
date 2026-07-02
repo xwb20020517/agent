@@ -7,10 +7,12 @@ from app.schemas.rag import RAGSource
 NO_ANSWER = "根据当前用户手册资料，未检索到相关内容，无法确定答案。"
 
 
-def format_page_range(start: str | None, end: str | None) -> str:
-    if start and end and start != end:
-        return f"{start}-{end}"
-    return start or end or "未知"
+def format_page_range(start, end) -> str:
+    start_text = str(start) if start is not None and start != "" else ""
+    end_text = str(end) if end is not None and end != "" else ""
+    if start_text and end_text and start_text != end_text:
+        return f"{start_text}-{end_text}"
+    return start_text or end_text or "未知"
 
 
 def build_context(chunks: list[RetrievedChunk], max_chars: int | None = None) -> str:

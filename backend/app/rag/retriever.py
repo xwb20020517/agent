@@ -171,13 +171,21 @@ def _source_weight(source: str) -> float:
     return 1.0
 
 
+def _format_page_range(start, end) -> str:
+    start_text = str(start) if start is not None and start != "" else ""
+    end_text = str(end) if end is not None and end != "" else ""
+    if start_text and end_text and start_text != end_text:
+        return f"{start_text}-{end_text}"
+    return start_text or end_text or "unknown"
+
+
 def _format_context_window(seed: RetrievedChunk, window_chunks: list[RetrievedChunk]) -> str:
     if not window_chunks:
         return seed.content
 
     blocks: list[str] = []
     for chunk in window_chunks:
-        page = "-".join(page for page in [chunk.page_number_start, chunk.page_number_end] if page) or "unknown"
+        page = _format_page_range(chunk.page_number_start, chunk.page_number_end)
         role = "seed" if chunk.chunk_id == seed.chunk_id else "neighbor"
         blocks.append(
             "\n".join(

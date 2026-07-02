@@ -1,37 +1,73 @@
 <script setup lang="ts">
-import type { LocalMessage } from "../api/client";
+import type { LocalMessage, RagSource } from "../api/client";
 
 defineProps<{
   messages: LocalMessage[];
   loading: boolean;
 }>();
+
+const visibleSourceCount = 8;
+
+function normalizeText(value: string) {
+  return value.replace(/\s+/g, " ").trim();
+}
+
+function formatPageRange(source: RagSource) {
+  const start = source.page_number_start ?? source.page_number_end;
+  const end = source.page_number_end;
+  if (!start) return "";
+  if (end && end !== start) return `页码 ${start}-${end}`;
+  return `页码 ${start}`;
+}
+
+function sourceLabel(source: RagSource) {
+  return [source.source_file, source.section_title, formatPageRange(source)].filter(Boolean).join(" / ");
+}
+
+function sourceIntro(source: RagSource) {
+  return normalizeText(source.content_preview);
+}
+
+function sourceFullText(source: RagSource) {
+  return `${sourceLabel(source)}\n\n${sourceIntro(source)}`;
+}
 </script>
 
 <template>
   <div class="messages">
-    <p v-if="loading" class="empty">正在加载消息</p>
+    <div v-if="loading" class="empty loading-state">
+      <span class="spinner" aria-hidden="true"></span>
+      <span>正在加载消息</span>
+    </div>
     <p v-else-if="!messages.length" class="empty">选择或创建会话后，输入问题即可开始。</p>
     <article v-for="item in messages" :key="item.id" :class="['message', item.role, item.status]">
       <div class="role">{{ item.role === "user" ? "我" : item.role === "assistant" ? "助手" : "系统" }}</div>
-      <p>{{ item.content || (item.status === "streaming" ? "..." : "") }}</p>
+      <div v-if="item.status === 'streaming' && !item.content" class="typing-indicator" aria-live="polite">
+        <span class="spinner" aria-hidden="true"></span>
+        <span>等待模型回复</span>
+      </div>
+      <p v-else>{{ item.content }}</p>
       <div v-if="item.sources?.length" class="sources">
-        <strong>引用来源</strong>
-        <ul>
-          <li v-for="source in item.sources" :key="source.chunk_id">
-            <div class="source-meta">
-              <span>{{ source.source_file }}</span>
-              <span v-if="source.section_title">｜{{ source.section_title }}</span>
-              <span v-if="source.page_number_start || source.page_number_end">
-                ｜页码 {{ source.page_number_start ?? source.page_number_end }}
-                <template v-if="source.page_number_end && source.page_number_end !== source.page_number_start">
-                  -{{ source.page_number_end }}
-                </template>
-              </span>
-              <small>score {{ source.score.toFixed(3) }}</small>
+        <div class="sources-header">
+          <strong>引用来源</strong>
+          <span>{{ Math.min(item.sources.length, visibleSourceCount) }} / {{ item.sources.length }}</span>
+        </div>
+        <ol>
+          <li
+            v-for="source in item.sources.slice(0, visibleSourceCount)"
+            :key="source.chunk_id"
+            class="source-line"
+            tabindex="0"
+          >
+            <div class="source-row" :title="sourceFullText(source)">
+              <span class="source-label">{{ sourceLabel(source) }}</span>
+              <span class="source-snippet">{{ sourceIntro(source) }}</span>
             </div>
-            <p>{{ source.content_preview }}</p>
+            <div class="source-popover" role="tooltip">
+              {{ sourceFullText(source) }}
+            </div>
           </li>
-        </ul>
+        </ol>
       </div>
     </article>
   </div>

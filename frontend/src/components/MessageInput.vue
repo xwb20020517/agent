@@ -37,7 +37,8 @@ function handleKeydown(event: KeyboardEvent) {
       @keydown="handleKeydown"
     />
     <button class="primary" :disabled="disabled || !draft.trim()" type="submit">
-      {{ streaming ? "生成中" : "发送" }}
+      <span v-if="streaming" class="spinner button-spinner" aria-hidden="true"></span>
+      <span>{{ streaming ? "生成中" : "发送" }}</span>
     </button>
   </form>
 </template>

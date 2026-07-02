@@ -394,8 +394,10 @@ def cleanup_internal_fields(chunks):
 def assign_chunk_ids(chunks, source_file):
     source_id = Path(source_file).stem or "source"
     for i, chunk in enumerate(chunks, start=1):
-        page_idx = chunk.get("page_idx_start")
-        page_part = f"p{page_idx}" if page_idx is not None else "punknown"
+        page_number = chunk.get("page_number_start")
+        if page_number is None:
+            page_number = chunk.get("page_idx_start")
+        page_part = f"p{page_number}" if page_number is not None else "punknown"
         chunk["chunk_id"] = f"{source_id}_{page_part}_c{i:03d}"
         ordered = {
             "chunk_id": chunk["chunk_id"],
@@ -446,7 +448,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description="Convert cleaned_2.json into RAG chunks.jsonl.")
     parser.add_argument("input_path", nargs="?", default="cleaned_2.json")
     parser.add_argument("output_path", nargs="?", default="chunks.jsonl")
-    parser.add_argument("--source-file", default="xia.pdf")
+    parser.add_argument("--source-file", default="han.pdf")
     return parser.parse_args()
 
 

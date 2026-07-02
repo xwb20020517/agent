@@ -1,14 +1,16 @@
 from dataclasses import dataclass
 from typing import Any
 
+PageNumber = str | int | None
+
 
 @dataclass(frozen=True)
 class RetrievedChunk:
     chunk_id: str
     source_file: str
     section_title: str | None
-    page_number_start: str | None
-    page_number_end: str | None
+    page_number_start: PageNumber
+    page_number_end: PageNumber
     chunk_type: str | None
     score: float
     content: str

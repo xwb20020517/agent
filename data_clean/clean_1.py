@@ -1,44 +1,14 @@
+import argparse
 import json
 from pathlib import Path
 
 
-def collect_content(obj):
-    """递归提取所有 content 字段"""
-    contents = []
-
-    if isinstance(obj, dict):
-        if "content" in obj and obj["content"] is not None:
-            contents.append(str(obj["content"]))
-
-        for value in obj.values():
-            contents.extend(collect_content(value))
-
-    elif isinstance(obj, list):
-        for item in obj:
-            contents.extend(collect_content(item))
-
-    return contents
-
-
-def extract_page_number(discarded_blocks):
-    """从 discarded_blocks 中提取 type == page_number 的 content"""
-    if not isinstance(discarded_blocks, list):
+def infer_page_number(page_idx, page_number_offset):
+    """通过 page_idx 和外部传入的偏移量推断真实页码。"""
+    try:
+        return int(page_idx) + int(page_number_offset)
+    except (TypeError, ValueError):
         return None
-
-    page_numbers = []
-
-    for block in discarded_blocks:
-        if not isinstance(block, dict):
-            continue
-
-        if block.get("type") == "page_number":
-            contents = collect_content(block)
-            page_numbers.extend(contents)
-
-    if not page_numbers:
-        return None
-
-    return "".join(page_numbers).strip()
 
 
 def is_empty(value):
@@ -61,7 +31,7 @@ def is_empty(value):
     return False
 
 
-def clean_pdf_json(raw_data):
+def clean_pdf_json(raw_data, page_number_offset=1):
     """清洗原始 JSON"""
     cleaned_data = {
         "pdf_info": []
@@ -75,7 +45,7 @@ def clean_pdf_json(raw_data):
 
         cleaned_page = {
             "page_idx": page.get("page_idx"),
-            "page_number": extract_page_number(page.get("discarded_blocks", [])),
+            "page_number": infer_page_number(page.get("page_idx"), page_number_offset),
             "para_blocks": page.get("para_blocks", [])
         }
 
@@ -117,14 +87,14 @@ def validate_cleaned_data(cleaned_data):
     return errors
 
 
-def clean_json_file(input_path, output_path, error_path=None):
+def clean_json_file(input_path, output_path, error_path=None, page_number_offset=1):
     input_path = Path(input_path)
     output_path = Path(output_path)
 
     with input_path.open("r", encoding="utf-8") as f:
         raw_data = json.load(f)
 
-    cleaned_data = clean_pdf_json(raw_data)
+    cleaned_data = clean_pdf_json(raw_data, page_number_offset=page_number_offset)
 
     errors = validate_cleaned_data(cleaned_data)
 
@@ -143,12 +113,34 @@ def clean_json_file(input_path, output_path, error_path=None):
     with output_path.open("w", encoding="utf-8") as f:
         json.dump(cleaned_data, f, ensure_ascii=False, indent=2)
 
+    if error_path:
+        error_path = Path(error_path)
+        if error_path.exists():
+            error_path.unlink()
+
     print(f"清洗并校验完成：{output_path}")
 
 
-if __name__ == "__main__":
-    clean_json_file(
-        input_path="MinerU_row.json",
-        output_path="cleaned_1.json",
-        error_path="clean_errors.json"
+def parse_args():
+    parser = argparse.ArgumentParser(description="Clean MinerU JSON and infer page_number from page_idx.")
+    parser.add_argument("input_path", nargs="?", default="data\\夏1_180.json")
+    parser.add_argument("output_path", nargs="?", default="cleaned_1.json")
+    parser.add_argument("--error-path", default="clean_errors.json")
+    parser.add_argument(
+        "--page-number-offset",
+        type=int,
+        default=1,
+        help="Real page number = page_idx + page_number_offset.",
     )
+    return parser.parse_args()
+
+
+if __name__ == "__main__":
+    args = parse_args()
+    clean_json_file(
+        input_path=args.input_path,
+        output_path=args.output_path,
+        error_path=args.error_path,
+        page_number_offset=args.page_number_offset,
+    )
+    # python .\clean_1.py data\汉301_412.json cleaned_1.json --page-number-offset 301

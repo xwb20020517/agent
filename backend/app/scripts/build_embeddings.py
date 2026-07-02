@@ -21,9 +21,13 @@ def vector_id_for_chunk(chunk_id: str) -> str:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build Qdrant embeddings for imported manual chunks.")
-    target = parser.add_mutually_exclusive_group(required=True)
+    target = parser.add_mutually_exclusive_group()
     target.add_argument("--source-file", help="Only build chunks from one manual source file.")
-    target.add_argument("--all", action="store_true", help="Build all pending or failed chunks.")
+    target.add_argument(
+        "--all",
+        action="store_true",
+        help="Build all pending or failed chunks. This is now the default when no source filter is provided.",
+    )
     parser.add_argument("--batch-size", type=int, default=32, help="Embedding batch size.")
     return parser.parse_args()
 
@@ -128,4 +132,4 @@ async def main() -> None:
 
 if __name__ == "__main__":
     asyncio.run(main())
-    # uv run python -m app.scripts.build_embeddings --source-file xia.pdf --batch-size 32
+    # uv run python -m app.scripts.build_embeddings --batch-size 32

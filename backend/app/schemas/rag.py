@@ -1,12 +1,14 @@
 from pydantic import BaseModel, Field
 
+PageNumber = str | int | None
+
 
 class RAGSource(BaseModel):
     chunk_id: str
     source_file: str
     section_title: str | None = None
-    page_number_start: str | None = None
-    page_number_end: str | None = None
+    page_number_start: PageNumber = None
+    page_number_end: PageNumber = None
     score: float
     content_preview: str
 
@@ -21,8 +23,8 @@ class RAGSearchResult(BaseModel):
     chunk_id: str
     source_file: str
     section_title: str | None = None
-    page_number_start: str | None = None
-    page_number_end: str | None = None
+    page_number_start: PageNumber = None
+    page_number_end: PageNumber = None
     chunk_type: str | None = None
     score: float
     content: str
@@ -48,8 +50,8 @@ class ManualChunkRead(BaseModel):
     chunk_id: str
     source_file: str
     section_title: str | None = None
-    page_number_start: str | None = None
-    page_number_end: str | None = None
+    page_number_start: PageNumber = None
+    page_number_end: PageNumber = None
     chunk_type: str
     content_preview: str
     embedding_status: str

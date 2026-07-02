@@ -10,7 +10,7 @@ from typing import Any
 from loguru import logger
 
 from app.core.config import settings
-from app.rag.retriever_types import RetrievedChunk
+from app.rag.retriever_types import PageNumber, RetrievedChunk
 
 
 _ALNUM_RE = re.compile(r"[a-zA-Z0-9]+")
@@ -28,8 +28,8 @@ class ChunkRecord:
     chunk_id: str
     source_file: str
     section_title: str | None
-    page_number_start: str | None
-    page_number_end: str | None
+    page_number_start: PageNumber
+    page_number_end: PageNumber
     chunk_type: str | None
     content: str
 

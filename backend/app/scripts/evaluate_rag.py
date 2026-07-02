@@ -189,12 +189,26 @@ def rouge_l_f1(prediction: str | None, reference: str | None) -> float:
     return 2 * precision * recall / (precision + recall)
 
 
+def page_text(page) -> str:
+    return str(page) if page is not None and page != "" else ""
+
+
 def pages_for_chunk(chunk: RetrievedChunk) -> list[str]:
     pages: list[str] = []
     for page in (chunk.page_number_start, chunk.page_number_end):
-        if page and page not in pages:
-            pages.append(str(page))
+        text = page_text(page)
+        if text and text not in pages:
+            pages.append(text)
     return pages
+
+
+def format_page_range(start, end) -> str:
+    pages = []
+    for page in (start, end):
+        text = page_text(page)
+        if text and text not in pages:
+            pages.append(text)
+    return "-".join(pages) or "unknown"
 
 
 def context_metrics(
@@ -226,9 +240,7 @@ def format_retrieved_context(chunks: list[RetrievedChunk], max_chars: int | None
     blocks: list[str] = []
     total = 0
     for index, chunk in enumerate(chunks, start=1):
-        page = "-".join(
-            page for page in [chunk.page_number_start, chunk.page_number_end] if page
-        ) or "unknown"
+        page = format_page_range(chunk.page_number_start, chunk.page_number_end)
         block = (
             f"[Context {index}]\n"
             f"chunk_id: {chunk.chunk_id}\n"
