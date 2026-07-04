@@ -116,7 +116,7 @@ flowchart LR
 │   ├── package.json
 │   └── README.md
 ├── data_clean/               # 数据清洗脚本、chunk 文件、评估结果
-└── 需求/                     # 需求文档与项目笔记
+└── mysql/                     # MysQL 数据
 ```
 
 ## 快速启动
